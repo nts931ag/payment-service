@@ -51,8 +51,9 @@ public class PaymentServiceTest {
     }
 
     private Bill createBill(BillType billType, double amount, LocalDate dueDate, String provider) {
-        Bill bill = new Bill(BillType.ELECTRIC, 200000, LocalDate.parse("25/10/2020", dateFormatter), "EVN HCMC");
+        Bill bill = new Bill(billType, 200000, dueDate, provider);
         Payment payment = new Payment(bill, amount, dueDate, PaymentState.PENDING);
+        bill.setPayment(payment);
         return bill;
     }
 
