@@ -12,7 +12,7 @@ The project contains the following main components:
 - **PaymentServiceImpl**: Implements the payment service with methods to add balance, pay bills, list bills, and schedule payments.
 
 Unit Tests
-Unit tests are written using JUnit 5. The tests cover the core functionalities of each class and method. They can be found in the src/test/java directory.
+Unit tests are written using JUnit. The tests cover the core functionalities of each class and method. They can be found in the src/test/java directory.
 
 Running Tests
 To run the tests, use your IDE's built-in test runner, or use Maven from the command line:
