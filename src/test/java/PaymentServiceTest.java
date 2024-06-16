@@ -43,7 +43,7 @@ public class PaymentServiceTest {
 
     @Test
     public void testAddBill() {
-        Bill bill = new Bill(BillType.ELECTRIC, 200000, LocalDate.parse("25/10/2020", dateFormatter), "EVN HCMC");
+        Bill bill = createBill(BillType.ELECTRIC, 200000, LocalDate.parse("25/10/2020", dateFormatter), "EVN HCMC");
         user.addBill(bill);
 
         assertEquals(1, user.getBillList().size());
@@ -51,7 +51,7 @@ public class PaymentServiceTest {
     }
 
     private Bill createBill(BillType billType, double amount, LocalDate dueDate, String provider) {
-        Bill bill = new Bill(billType, 200000, dueDate, provider);
+        Bill bill = new  Bill(billType, 200000, dueDate, provider);
         Payment payment = new Payment(bill, amount, dueDate, PaymentState.PENDING);
         bill.setPayment(payment);
         return bill;
@@ -83,7 +83,7 @@ public class PaymentServiceTest {
 
     @Test
     public void testSchedulePayment() {
-        Bill bill = new Bill(BillType.INTERNET, 800000, LocalDate.parse("30/11/2020", dateFormatter), "VNPT");
+        Bill bill = createBill(BillType.INTERNET, 800000, LocalDate.parse("30/11/2020", dateFormatter), "VNPT");
         Payment payment2 = new Payment(bill, bill.getAmount(), bill.getDueDate(), PaymentState.PENDING);
         bill.setPayment(payment2);
         user.addBill(bill);
@@ -98,9 +98,9 @@ public class PaymentServiceTest {
 
     @Test
     public void testSearchBillByProvider() {
-        Bill bill1 = new Bill(BillType.ELECTRIC, 200000, LocalDate.parse("25/10/2020", dateFormatter), "EVN HCMC");
-        Bill bill2 = new Bill(BillType.WATER, 175000, LocalDate.parse("30/10/2020", dateFormatter), "SAVACO HCMC");
-        Bill bill3 = new Bill(BillType.INTERNET, 800000, LocalDate.parse("30/11/2020", dateFormatter), "VNPT");
+        Bill bill1 = createBill(BillType.ELECTRIC, 200000, LocalDate.parse("25/10/2020", dateFormatter), "EVN HCMC");
+        Bill bill2 = createBill(BillType.WATER, 175000, LocalDate.parse("30/10/2020", dateFormatter), "SAVACO HCMC");
+        Bill bill3 = createBill(BillType.INTERNET, 800000, LocalDate.parse("30/11/2020", dateFormatter), "VNPT");
 
         user.addBill(bill1);
         user.addBill(bill2);
