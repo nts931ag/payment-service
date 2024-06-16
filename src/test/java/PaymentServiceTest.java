@@ -50,9 +50,15 @@ public class PaymentServiceTest {
         assertEquals(BillType.ELECTRIC, user.getBillList().get(0).getType());
     }
 
+    private Bill createBill(BillType billType, double amount, LocalDate dueDate, String provider) {
+        Bill bill = new Bill(BillType.ELECTRIC, 200000, LocalDate.parse("25/10/2020", dateFormatter), "EVN HCMC");
+        Payment payment = new Payment(bill, amount, dueDate, PaymentState.PENDING);
+        return bill;
+    }
+
     @Test
     public void testPayBill() {
-        Bill bill = new Bill(BillType.ELECTRIC, 200000, LocalDate.parse("25/10/2020", dateFormatter), "EVN HCMC");
+        Bill bill = createBill(BillType.ELECTRIC, 200000, LocalDate.parse("25/10/2020", dateFormatter), "EVN HCMC");
         user.addBill(bill);
         paymentService.addBalanceForUser(user,300000);
 
@@ -64,7 +70,7 @@ public class PaymentServiceTest {
 
     @Test
     public void testPayBillInsufficientFunds() {
-        Bill bill = new Bill(BillType.WATER, 175000, LocalDate.parse("30/10/2020", dateFormatter), "SAVACO HCMC");
+        Bill bill = createBill(BillType.WATER, 175000, LocalDate.parse("30/10/2020", dateFormatter), "SAVACO HCMC");
         user.addBill(bill);
         paymentService.addBalanceForUser(user,100000);
 
@@ -99,7 +105,7 @@ public class PaymentServiceTest {
         user.addBill(bill2);
         user.addBill(bill3);
 
-        long count = paymentService.searchBillByProvider(user, "VNPT").stream().count();
+        long count = paymentService.searchBillByProvider(user, "VNPT").size();
 
         assertEquals(1, count);
     }
