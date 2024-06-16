@@ -113,7 +113,7 @@ public class PaymentServiceApp {
                     }
                     BillType type = BillType.fromValue(commandParts[2]);
                     bill.setType(type);
-                    System.out.printf("Bill id %s is updated successfully", billId);
+                    System.out.printf("Bill id %s is updated successfully%n", billId);
                     break;
                 }
                 case "UPDATE_AMOUNT_BILL": {
@@ -125,7 +125,7 @@ public class PaymentServiceApp {
                     }
                     Double amount = Double.parseDouble(commandParts[2]);
                     bill.setAmount(amount);
-                    System.out.printf("Bill id %s is updated successfully", billId);
+                    System.out.printf("Bill id %s is updated successfully%n", billId);
                     break;
                 }
                 case "UPDATE_DUE_DATE_BILL": {
@@ -137,7 +137,7 @@ public class PaymentServiceApp {
                     }
                     LocalDate dueDate = LocalDate.parse(commandParts[2], dateFormatter);
                     bill.setDueDate(dueDate);
-                    System.out.printf("Bill id %s is updated successfully", billId);
+                    System.out.printf("Bill id %s is updated successfully%n", billId);
                     break;
                 }
                 case "UPDATE_PROVIDER_BILL": {
@@ -148,7 +148,7 @@ public class PaymentServiceApp {
                         break;
                     }
                     bill.setProvider(commandParts[2]);
-                    System.out.printf("Bill id %s is updated successfully", billId);
+                    System.out.printf("Bill id %s is updated successfully%n", billId);
                     break;
                 }
                 case "SEARCH_BILL": {
@@ -157,7 +157,7 @@ public class PaymentServiceApp {
                         System.out.printf("Bill id %s is not exist", Integer.parseInt(commandParts[1]));
                         break;
                     }
-                    System.out.println(bill);
+                    System.out.print(bill);
                     break;
                 }
                 case "SEARCH_BILL_BY_PROVIDER":
