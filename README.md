@@ -1,6 +1,6 @@
 # Bill Payment System
 
-This project is a bill payment system that allows users to manage their bills and make payments. It is implemented in Java and uses JUnit 5 for unit testing.
+This project is a bill payment system that allows users to manage their bills and make payments. It is implemented in Java and uses JUnit for unit testing.
 
 ## Project Structure
 
@@ -85,7 +85,6 @@ Copy code
 mvn test
 Getting Started
 Prerequisites
-Java 11 or higher
 Maven
 Building the Project
 Clone the repository:
